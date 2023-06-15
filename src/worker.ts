@@ -10,9 +10,11 @@ export default {
     }
 
     const svg = await renderInviteSVG({ inviteCode });
+    const fiveHoursInSeconds = 60 * 60 * 5;
 
     return new Response(svg, {
       headers: {
+        "Cache-Control": `public, max-age=${fiveHoursInSeconds}`,
         "Content-Type": "image/svg+xml",
       },
     });
