@@ -3,31 +3,44 @@ import { SatoriOptions } from "satori/wasm";
 export async function loadFonts(): Promise<SatoriOptions["fonts"]> {
   return [
     {
-      name: "Roboto",
+      name: "Whitney",
       weight: 400,
       style: "normal",
       data: await (
         await fetch(
-          "https://github.com/google/fonts/raw/main/apache/roboto/static/Roboto-Regular.ttf",
+          "https://github.com/Dev-CasperTheGhost/discord-invite-widget/raw/main/assets/fonts/whitneybook.otf",
+        )
+      ).arrayBuffer(),
+    },
+
+    {
+      name: "Whitney",
+      weight: 500,
+      style: "normal",
+      data: await (
+        await fetch(
+          "https://github.com/Dev-CasperTheGhost/discord-invite-widget/raw/main/assets/fonts/whitneymedium.otf",
         )
       ).arrayBuffer(),
     },
     {
-      name: "Roboto",
+      name: "Whitney",
       weight: 600,
       style: "normal",
       data: await (
         await fetch(
-          "https://github.com/google/fonts/raw/main/apache/roboto/static/Roboto-Medium.ttf",
+          "https://github.com/Dev-CasperTheGhost/discord-invite-widget/raw/main/assets/fonts/whitneysemibold.otf",
         )
       ).arrayBuffer(),
     },
     {
-      name: "Roboto",
+      name: "Whitney",
       weight: 700,
       style: "normal",
       data: await (
-        await fetch("https://github.com/google/fonts/raw/main/apache/roboto/static/Roboto-Bold.ttf")
+        await fetch(
+          "https://github.com/Dev-CasperTheGhost/discord-invite-widget/raw/main/assets/fonts/whitneybold.otf",
+        )
       ).arrayBuffer(),
     },
   ];
