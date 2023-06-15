@@ -9,7 +9,7 @@ interface RenderInviteSVGOptions {
 const PADDING = 16;
 const ICON_SIZE = 50;
 
-const HEADER_FONT_SIZE = 14;
+const HEADER_FONT_SIZE = 13;
 const HEADER_LINE_HEIGHT = 16;
 const HEADER_MARGIN_BOTTOM = 12;
 
@@ -128,7 +128,7 @@ export async function renderInviteSVG(options: RenderInviteSVGOptions) {
                                 fontSize: SERVER_NAME_SIZE,
                                 color: COLORS.serverName,
                                 height: SERVER_NAME_LINE_HEIGHT,
-                                fontWeight: 700,
+                                fontWeight: 600,
                                 marginBottom: SERVER_NAME_MARGIN_BOTTOM,
                               },
                             },
@@ -142,6 +142,7 @@ export async function renderInviteSVG(options: RenderInviteSVGOptions) {
                                 display: "flex",
                                 flexDirection: "row",
                                 alignItems: "center",
+                                fontWeight: 500,
                               },
                               children: [
                                 {
@@ -160,6 +161,7 @@ export async function renderInviteSVG(options: RenderInviteSVGOptions) {
                                         props: {
                                           id: "server-presence-dot",
                                           style: {
+                                            marginTop: 2,
                                             width: PRESENCE_DOT_SIZE,
                                             height: PRESENCE_DOT_SIZE,
                                             borderRadius: PRESENCE_DOT_SIZE / 2,
@@ -201,6 +203,7 @@ export async function renderInviteSVG(options: RenderInviteSVGOptions) {
                                         props: {
                                           id: "server-members-dot",
                                           style: {
+                                            marginTop: 2,
                                             width: PRESENCE_DOT_SIZE,
                                             height: PRESENCE_DOT_SIZE,
                                             borderRadius: PRESENCE_DOT_SIZE / 2,
@@ -243,10 +246,9 @@ export async function renderInviteSVG(options: RenderInviteSVGOptions) {
                           flexDirection: "column",
                         },
                         children: {
-                          type: "a",
+                          type: "div",
                           props: {
                             id: "join-button",
-                            href: `https://discord.gg/${invite.code}`,
                             children: "Join",
                             style: {
                               display: "flex",
@@ -260,7 +262,6 @@ export async function renderInviteSVG(options: RenderInviteSVGOptions) {
                               color: "#ffffff",
                               fontSize: 16,
                               fontWeight: 600,
-                              textDecoration: "none",
                             },
                           },
                         },

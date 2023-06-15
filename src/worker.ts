@@ -1,3 +1,4 @@
+import { fiveHoursInSeconds } from "./utils/discord";
 import { renderInviteSVG } from "./utils/svg-renderer";
 
 export default {
@@ -10,7 +11,6 @@ export default {
     }
 
     const svg = await renderInviteSVG({ inviteCode });
-    const fiveHoursInSeconds = 60 * 60 * 5;
 
     return new Response(svg, {
       headers: {

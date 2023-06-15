@@ -1,4 +1,5 @@
 import { RESTGetAPIInviteResult, Routes } from "discord-api-types/v10";
+export const fiveHoursInSeconds = 60 * 60 * 5;
 
 interface GetDiscordInviteViaCodeOptions {
   inviteCode: string;
@@ -10,15 +11,21 @@ const CDN_BASE_URL = "https://cdn.discordapp.com";
 export async function getDiscordInviteViaCode(options: GetDiscordInviteViaCodeOptions) {
   const route = Routes.invite(options.inviteCode);
 
-  return fetch(`${API_BASE_URL}${route}?with_counts=true`).then((res) =>
-    res.json(),
-  ) as Promise<RESTGetAPIInviteResult>;
+  return fetch(`${API_BASE_URL}${route}?with_counts=true`, {
+    headers: {
+      "Cache-Control": `public, max-age=${fiveHoursInSeconds}`,
+    },
+  }).then((res) => res.json()) as Promise<RESTGetAPIInviteResult>;
 }
 
 export async function fetchDiscordGuildIconBase64(guildId: string, iconId: string) {
   const iconUrl = getDiscordGuildIconUrl(guildId, iconId);
 
-  const buffer = await fetch(iconUrl).then((res) => res.arrayBuffer());
+  const buffer = await fetch(iconUrl, {
+    headers: {
+      "Cache-Control": `public, max-age=${fiveHoursInSeconds}`,
+    },
+  }).then((res) => res.arrayBuffer());
   return buffer;
 }
 
