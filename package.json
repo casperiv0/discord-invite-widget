@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "deploy": "wrangler publish",
-    "format": "prettier --write \"./**/**/*.{js,jsx,ts,mjs,tsx,md,css,json}\" --ignore-path .gitignore",
-    "start": "wrangler dev --remote --env development"
+    "deploy": "wrangler deploy --env production",
+    "dev": "wrangler dev --remote --env development",
+    "format": "prettier --write \"./**/**/*.{js,jsx,ts,mjs,tsx,md,css,json}\" --ignore-path .gitignore"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20230419.0",

@@ -1,4 +1,4 @@
-import { fetchDiscordGuildIconBase64, getDiscordInviteViaCode } from "../discord";
+import { fetchDiscordGuildIconBase64, getDiscordInviteViaCode } from "./discord";
 import satori from "satori";
 import { loadFonts } from "./load-fonts";
 
