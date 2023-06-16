@@ -1,0 +1,32 @@
+{
+  "en-US": {
+    "youHaveBeenInvitedToJoinAServer": "You've been invited to join a server",
+    "join": "Join",
+    "online": "Online",
+    "members": "Members"
+  },
+  "en-GB": {
+    "youHaveBeenInvitedToJoinAServer": "You've been invited to join a server",
+    "join": "Join",
+    "online": "Online",
+    "members": "Members"
+  },
+  "dk": {
+    "youHaveBeenInvitedToJoinAServer": "DU ER BLEVET INVITERET TIL AT TILSLUTTE DIG EN SERVER",
+    "join": "Tilsluttede",
+    "online": "Online",
+    "members": "medlemmer"
+  },
+  "nl": {
+    "youHaveBeenInvitedToJoinAServer": "Je hebt een uitnodiging gekregen om lid te worden van een server",
+    "join": "Lid worden",
+    "online": "Online",
+    "members": "Leden"
+  },
+  "fr-FR": {
+    "youHaveBeenInvitedToJoinAServer": "TU AS ÉTÉ INVITÉ(E) à REJOINDRE UN SERVEUR",
+    "join": "Rejoint",
+    "online": "En ligne",
+    "members": "Membres"
+  }
+}

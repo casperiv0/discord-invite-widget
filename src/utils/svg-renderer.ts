@@ -1,9 +1,11 @@
 import { fetchDiscordGuildIconBase64, getDiscordInviteViaCode } from "./discord";
 import satori from "satori";
 import { loadFonts } from "./load-fonts";
+import { Locale, t } from "./translate";
 
 interface RenderInviteSVGOptions {
   inviteCode: string;
+  locale: Locale;
 }
 
 const PADDING = 16;
@@ -13,7 +15,7 @@ const HEADER_FONT_SIZE = 13;
 const HEADER_LINE_HEIGHT = 16;
 const HEADER_MARGIN_BOTTOM = 12;
 
-const SERVER_NAME_SIZE = 16;
+const SERVER_NAME_SIZE = 17;
 const SERVER_NAME_LINE_HEIGHT = 20;
 const SERVER_NAME_MARGIN_BOTTOM = 2;
 
@@ -39,6 +41,7 @@ const COLORS = {
   presenceText: "#b9bbbe",
   online: "#3ba55c",
   members: "#747f8d",
+  joinBtnBackgroundColor: "#2d7d46",
 };
 
 export async function renderInviteSVG(options: RenderInviteSVGOptions) {
@@ -52,6 +55,15 @@ export async function renderInviteSVG(options: RenderInviteSVGOptions) {
   const guildIconBase64 = invite.guild.icon
     ? await fetchDiscordGuildIconBase64(invite.guild.id, invite.guild.icon)
     : undefined;
+
+  const JOIN_SERVER_HEADER_TEXT = t("youHaveBeenInvitedToJoinAServer", options.locale);
+  const ONLINE_TEXT = t("online", options.locale);
+  const MEMBERS_TEXT = t("members", options.locale);
+  const JOIN_BTN_TEXT = t("join", options.locale);
+  const NUMBER_FORMATTER = new Intl.NumberFormat(options.locale);
+
+  const formattedOnlineCount = NUMBER_FORMATTER.format(invite.approximate_presence_count || 0);
+  const formattedMemberCount = NUMBER_FORMATTER.format(invite.approximate_member_count || 0);
 
   const svg = await satori(
     {
@@ -72,7 +84,7 @@ export async function renderInviteSVG(options: RenderInviteSVGOptions) {
               {
                 type: "header",
                 props: {
-                  children: "You've been invited to join a server",
+                  children: JOIN_SERVER_HEADER_TEXT,
                   style: {
                     fontSize: HEADER_FONT_SIZE,
                     color: COLORS.header,
@@ -80,6 +92,9 @@ export async function renderInviteSVG(options: RenderInviteSVGOptions) {
                     textTransform: "uppercase",
                     fontWeight: 700,
                     marginBottom: HEADER_MARGIN_BOTTOM,
+                    textOverflow: "ellipsis",
+                    overflow: "hidden",
+                    whiteSpace: "nowrap",
                   },
                 },
               },
@@ -143,6 +158,10 @@ export async function renderInviteSVG(options: RenderInviteSVGOptions) {
                                 flexDirection: "row",
                                 alignItems: "center",
                                 fontWeight: 500,
+                                textOverflow: "ellipsis",
+                                overflow: "hidden",
+                                whiteSpace: "nowrap",
+                                paddingRight: 14,
                               },
                               children: [
                                 {
@@ -174,7 +193,7 @@ export async function renderInviteSVG(options: RenderInviteSVGOptions) {
                                         type: "div",
                                         props: {
                                           id: "server-presence-text",
-                                          children: `${invite.approximate_presence_count} Online`,
+                                          children: `${formattedOnlineCount} ${ONLINE_TEXT}`,
                                           style: {
                                             fontSize: PRESENCE_FONT_SIZE,
                                             color: COLORS.presenceText,
@@ -216,7 +235,7 @@ export async function renderInviteSVG(options: RenderInviteSVGOptions) {
                                         type: "div",
                                         props: {
                                           id: "server-presence-text",
-                                          children: `${invite.approximate_member_count} Members`,
+                                          children: `${formattedMemberCount} ${MEMBERS_TEXT}`,
                                           style: {
                                             fontSize: PRESENCE_FONT_SIZE,
                                             color: COLORS.presenceText,
@@ -249,19 +268,20 @@ export async function renderInviteSVG(options: RenderInviteSVGOptions) {
                           type: "div",
                           props: {
                             id: "join-button",
-                            children: "Join",
+                            children: JOIN_BTN_TEXT,
                             style: {
                               display: "flex",
                               flexDirection: "row",
                               alignItems: "center",
                               justifyContent: "center",
-                              width: BUTTON_WIDTH,
+                              minWidth: BUTTON_WIDTH,
                               height: BUTTON_HEIGHT,
                               borderRadius: 3,
-                              backgroundColor: COLORS.online,
+                              backgroundColor: COLORS.joinBtnBackgroundColor,
                               color: "#ffffff",
                               fontSize: 16,
                               fontWeight: 600,
+                              padding: "0 16px",
                             },
                           },
                         },

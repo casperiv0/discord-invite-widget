@@ -1,5 +1,6 @@
 import { oneHourInSeconds } from "./utils/discord";
 import { renderInviteSVG } from "./utils/svg-renderer";
+import { getSupportedLocale } from "./utils/translate";
 
 export default {
   async fetch(request: Request): Promise<Response> {
@@ -10,7 +11,17 @@ export default {
       return new Response("Missing invite code", { status: 400 });
     }
 
-    const svg = await renderInviteSVG({ inviteCode });
+    const locale = getSupportedLocale(url.searchParams.get("locale"));
+    const svg = await renderInviteSVG({ locale, inviteCode });
+
+    if (!svg) {
+      return new Response(
+        JSON.stringify({
+          error: "Unable to fetch invite information",
+        }),
+        { status: 500 },
+      );
+    }
 
     return new Response(svg, {
       headers: {
