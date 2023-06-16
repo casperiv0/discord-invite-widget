@@ -19,6 +19,7 @@ const HEADER_MARGIN_BOTTOM = 12;
 const SERVER_NAME_SIZE = 17;
 const SERVER_NAME_LINE_HEIGHT = 20;
 const SERVER_NAME_MARGIN_BOTTOM = 2;
+const SERVER_NAME_MARGIN_LEFT = 14;
 
 const PRESENCE_FONT_SIZE = 14;
 const PRESENCE_LINE_HEIGHT = 16;
@@ -26,6 +27,7 @@ const PRESENCE_TEXT_MARGIN_RIGHT = 8;
 
 const PRESENCE_DOT_SIZE = 8;
 const PRESENCE_DOT_MARGIN_RIGHT = 4;
+const SERVER_MEMBERS_PADDING_RIGHT = 14;
 
 export const INVITE_WIDTH = 430;
 const INVITE_HEIGHT = 110;
@@ -146,8 +148,6 @@ export async function renderInviteSVG(options: RenderInviteSVGOptions) {
                     fontWeight: 700,
                     marginBottom: HEADER_MARGIN_BOTTOM,
                     textOverflow: "ellipsis",
-                    overflow: "hidden",
-                    whiteSpace: "nowrap",
                   },
                 },
               },
@@ -181,7 +181,7 @@ export async function renderInviteSVG(options: RenderInviteSVGOptions) {
                       props: {
                         id: "server-name-container",
                         style: {
-                          marginLeft: 14,
+                          marginLeft: SERVER_NAME_MARGIN_LEFT,
                           display: "flex",
                           flexDirection: "column",
                         },
@@ -202,6 +202,16 @@ export async function renderInviteSVG(options: RenderInviteSVGOptions) {
                                 flexDirection: "row",
                                 alignItems: "center",
                                 gap: "2px",
+                                textOverflow: "ellipsis",
+                                overflow: "hidden",
+                                whiteSpace: "nowrap",
+                                width:
+                                  INVITE_WIDTH -
+                                  2 * PADDING -
+                                  ICON_SIZE -
+                                  SERVER_NAME_MARGIN_LEFT -
+                                  BUTTON_WIDTH -
+                                  SERVER_MEMBERS_PADDING_RIGHT,
                               },
                             },
                           },
@@ -218,7 +228,7 @@ export async function renderInviteSVG(options: RenderInviteSVGOptions) {
                                 textOverflow: "ellipsis",
                                 overflow: "hidden",
                                 whiteSpace: "nowrap",
-                                paddingRight: 14,
+                                paddingRight: SERVER_MEMBERS_PADDING_RIGHT,
                               },
                               children: [
                                 {
