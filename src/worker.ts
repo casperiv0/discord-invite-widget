@@ -1,4 +1,4 @@
-import { fiveHoursInSeconds } from "./utils/discord";
+import { oneHourInSeconds } from "./utils/discord";
 import { renderInviteSVG } from "./utils/svg-renderer";
 
 export default {
@@ -14,7 +14,7 @@ export default {
 
     return new Response(svg, {
       headers: {
-        "Cache-Control": `public, max-age=${fiveHoursInSeconds}`,
+        "Cache-Control": `public, max-age=${oneHourInSeconds}`,
         "Content-Type": "image/svg+xml",
       },
     });

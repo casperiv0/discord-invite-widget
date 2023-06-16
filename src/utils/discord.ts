@@ -1,5 +1,5 @@
 import { RESTGetAPIInviteResult, Routes } from "discord-api-types/v10";
-export const fiveHoursInSeconds = 60 * 60 * 5;
+export const oneHourInSeconds = 60 * 60;
 
 interface GetDiscordInviteViaCodeOptions {
   inviteCode: string;
@@ -13,7 +13,7 @@ export async function getDiscordInviteViaCode(options: GetDiscordInviteViaCodeOp
 
   return fetch(`${API_BASE_URL}${route}?with_counts=true`, {
     headers: {
-      "Cache-Control": `public, max-age=${fiveHoursInSeconds}`,
+      "Cache-Control": `public, max-age=${oneHourInSeconds}`,
     },
   }).then((res) => res.json()) as Promise<RESTGetAPIInviteResult>;
 }
@@ -22,7 +22,7 @@ export async function fetchDiscordGuildIconBase64(guildId: string, iconId: strin
   const iconUrl = getDiscordGuildIconUrl(guildId, iconId);
 
   const buffer = await fetch(iconUrl, {
-    headers: { "Cache-Control": `public, max-age=${fiveHoursInSeconds}` },
+    headers: { "Cache-Control": `public, max-age=${oneHourInSeconds}` },
   }).then((res) => res.arrayBuffer());
 
   return buffer;
