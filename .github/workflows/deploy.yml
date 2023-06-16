@@ -13,4 +13,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          command: deploy src/worker.ts --env production
+          preCommands: |
+            echo "*** pre command ***"
+            ls
+          command: deploy --env production
