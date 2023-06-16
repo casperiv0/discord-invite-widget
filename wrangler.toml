@@ -8,5 +8,11 @@ mode = "smart"
 [env.development.vars]
 ENVIRONMENT = "development"
 
+[env.development]
+name = "discord-invite-widget-cf-workers-development"
+
+[env.production]
+name = "discord-invite-widget-cf-workers-production"
+
 [env.production.vars]
 ENVIRONMENT = "production"

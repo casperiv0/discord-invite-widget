@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "deploy": "wrangler deploy --env production",
+    "deploy": "wrangler deploy src/worker.ts --env production",
     "dev": "wrangler dev --remote --env development",
     "prettier:check": "prettier --check \"./**/**/*.{js,jsx,ts,mjs,tsx,md,css,json}\" --ignore-path .gitignore",
     "format": "prettier --write \"./**/**/*.{js,jsx,ts,mjs,tsx,md,css,json}\" --ignore-path .gitignore",

@@ -25,3 +25,8 @@ jobs:
 
       - name: Typecheck app
         run: npm run typecheck
+
+      - name: Deploy to Cloudflare Workers
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CF_ACCOUNT_ID }}
+        run: npm run deploy
