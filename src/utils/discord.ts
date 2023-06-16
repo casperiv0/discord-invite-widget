@@ -5,8 +5,8 @@ interface GetDiscordInviteViaCodeOptions {
   inviteCode: string;
 }
 
-const API_BASE_URL = "https://discord.com/api/v10";
-const CDN_BASE_URL = "https://cdn.discordapp.com";
+const API_BASE_URL = "https://discord.com/api/v10" as const;
+const CDN_BASE_URL = "https://cdn.discordapp.com" as const;
 
 export async function getDiscordInviteViaCode(options: GetDiscordInviteViaCodeOptions) {
   const route = Routes.invite(options.inviteCode);
@@ -22,10 +22,9 @@ export async function fetchDiscordGuildIconBase64(guildId: string, iconId: strin
   const iconUrl = getDiscordGuildIconUrl(guildId, iconId);
 
   const buffer = await fetch(iconUrl, {
-    headers: {
-      "Cache-Control": `public, max-age=${fiveHoursInSeconds}`,
-    },
+    headers: { "Cache-Control": `public, max-age=${fiveHoursInSeconds}` },
   }).then((res) => res.arrayBuffer());
+
   return buffer;
 }
 

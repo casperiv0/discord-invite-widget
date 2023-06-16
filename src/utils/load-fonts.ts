@@ -4,17 +4,6 @@ export async function loadFonts(): Promise<SatoriOptions["fonts"]> {
   return [
     {
       name: "Whitney",
-      weight: 400,
-      style: "normal",
-      data: await (
-        await fetch(
-          "https://github.com/Dev-CasperTheGhost/discord-invite-widget/raw/main/assets/fonts/whitneybook.otf",
-        )
-      ).arrayBuffer(),
-    },
-
-    {
-      name: "Whitney",
       weight: 500,
       style: "normal",
       data: await (
