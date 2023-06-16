@@ -28,10 +28,9 @@ jobs:
 
       - name: Publish to Cloudflare Workers Sites
         env:
-          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
-          CF_ZONE_ID: ${{ secrets.CF_ZONE_ID }}
-          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
           mkdir -p ~/.wrangler/config/
-          echo "api_token=\"${CF_API_TOKEN}\"" > ~/.wrangler/config/default.toml
+          echo "api_token=\"${CLOUDFLARE_API_TOKEN}\"" > ~/.wrangler/config/default.toml
           npm run deploy
