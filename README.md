@@ -14,7 +14,7 @@
 ## Query Parameters
 
 | Name         | Description                                                                         | Required |
-| ------------ | ----------------------------------------------------------------------------------- | -------- |
-| `inviteCode` | The invite code of the server                                                       | Yes      |
+| :----------- | :---------------------------------------------------------------------------------- | :------- |
+| `inviteCode` | The invite code of the server                                                       | **Yes**  |
 | `locale`     | The locale for the widget. Supported locales: `en-US`, `en-GB`, `fr-FR`, `nl`, `dk` | No       |
 | `format`     | Supports `svg` and `png`                                                            | No       |
