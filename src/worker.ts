@@ -1,4 +1,5 @@
 import { oneHourInSeconds } from "./utils/discord";
+import { INDEX_PAGE } from "./utils/index-page";
 import { svgToPng } from "./utils/resvg";
 import { renderInviteSVG } from "./utils/svg-renderer";
 import { getSupportedLocale } from "./utils/translate";
@@ -9,7 +10,11 @@ export default {
 
     const inviteCode = url.searchParams.get("inviteCode");
     if (!inviteCode) {
-      return new Response("Missing invite code", { status: 400 });
+      return new Response(INDEX_PAGE.trimStart(), {
+        headers: {
+          "Content-Type": "text/markdown",
+        },
+      });
     }
 
     const locale = getSupportedLocale(url.searchParams.get("locale"));
