@@ -1,4 +1,4 @@
-name: CI (Typecheck & Lint)
+name: CI (Typecheck & Lint & Deploy)
 
 on: [push, pull_request]
 
@@ -25,3 +25,10 @@ jobs:
 
       - name: Typecheck app
         run: npm run typecheck
+
+      - name: Publish
+        uses: cloudflare/wrangler-action@2.0.0
+        with:
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+        env:
+          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
