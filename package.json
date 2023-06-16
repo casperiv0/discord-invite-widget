@@ -1,6 +1,7 @@
 {
   "name": "discord-invite-widget",
   "version": "0.0.0",
+  "main": "src/worker.ts",
   "private": true,
   "scripts": {
     "deploy": "wrangler deploy src/worker.ts --env production",
