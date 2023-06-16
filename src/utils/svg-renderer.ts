@@ -1,7 +1,8 @@
-import { fetchDiscordGuildIconBase64, getDiscordInviteViaCode } from "./discord";
+import { BADGES, fetchDiscordGuildIconBase64, flowStar, getDiscordInviteViaCode } from "./discord";
 import satori from "satori";
 import { loadFonts } from "./load-fonts";
 import { Locale, t } from "./translate";
+import { GuildFeature } from "discord-api-types/v10";
 
 interface RenderInviteSVGOptions {
   inviteCode: string;
@@ -42,6 +43,8 @@ const COLORS = {
   online: "#3ba55c",
   members: "#747f8d",
   joinBtnBackgroundColor: "#2d7d46",
+  verifiedBackgroundColor: "#23a559",
+  partnerBackgroundColor: "#5865f2",
 };
 
 export async function renderInviteSVG(options: RenderInviteSVGOptions) {
@@ -64,6 +67,56 @@ export async function renderInviteSVG(options: RenderInviteSVGOptions) {
 
   const formattedOnlineCount = NUMBER_FORMATTER.format(invite.approximate_presence_count || 0);
   const formattedMemberCount = NUMBER_FORMATTER.format(invite.approximate_member_count || 0);
+
+  const isVerified = invite.guild.features.includes(GuildFeature.Verified);
+  const isPartnered = invite.guild.features.includes(GuildFeature.Partnered);
+  const isCommunity = invite.guild.features.includes(GuildFeature.Community);
+
+  const badge = isVerified
+    ? BADGES.VERIFIED_ICON
+    : isPartnered
+    ? BADGES.PARTNER_ICON
+    : isCommunity
+    ? BADGES.COMMUNITY
+    : null;
+
+  const serverNameChildren = [invite.guild.name] as any[];
+
+  if (badge) {
+    const badgeBackgroundColor = isVerified
+      ? COLORS.verifiedBackgroundColor
+      : isPartnered
+      ? COLORS.partnerBackgroundColor
+      : "white";
+
+    const fill = isVerified || isPartnered ? "white" : "black";
+
+    serverNameChildren.push({
+      type: "svg",
+      props: {
+        width: 16,
+        height: 16,
+        style: { marginTop: 2 },
+        children: [
+          {
+            type: "path",
+            props: {
+              fill: badgeBackgroundColor,
+              d: flowStar,
+            },
+          },
+          {
+            type: "path",
+            props: {
+              fill,
+              transform: isVerified || isPartnered ? undefined : "translate(3, 3)",
+              d: badge,
+            },
+          },
+        ],
+      },
+    });
+  }
 
   const svg = await satori(
     {
@@ -110,7 +163,7 @@ export async function renderInviteSVG(options: RenderInviteSVGOptions) {
                   children: [
                     // server icon
                     {
-                      type: "img",
+                      type: guildIconBase64 ? "img" : "div",
                       props: {
                         id: "server-icon",
                         src: guildIconBase64,
@@ -138,13 +191,17 @@ export async function renderInviteSVG(options: RenderInviteSVGOptions) {
                             type: "div",
                             props: {
                               id: "server-name",
-                              children: invite.guild.name,
+                              children: serverNameChildren,
                               style: {
                                 fontSize: SERVER_NAME_SIZE,
                                 color: COLORS.serverName,
                                 height: SERVER_NAME_LINE_HEIGHT,
                                 fontWeight: 600,
                                 marginBottom: SERVER_NAME_MARGIN_BOTTOM,
+                                display: "flex",
+                                flexDirection: "row",
+                                alignItems: "center",
+                                gap: "2px",
                               },
                             },
                           },
