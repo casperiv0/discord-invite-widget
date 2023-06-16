@@ -22,5 +22,5 @@
 ## Examples
 
 [![SnailyCAD](https://invite.caspertheghost.me?inviteCode=eGnrPqEH7U)](https://discord.gg/eGnrPqEH7U)
-[![luxalgo](https://invite.caspertheghost.me?inviteCode=luxalgo)](https://discord.gg/luxalgo)
+[![luxalgo](https://invite.caspertheghost.me?inviteCode=lux)](https://discord.gg/lux)
 [![Discord Developers](https://invite.caspertheghost.me?inviteCode=discord-developers)](https://discord.gg/discord-developers)
