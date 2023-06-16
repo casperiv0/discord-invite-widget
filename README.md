@@ -18,3 +18,9 @@
 | `inviteCode` | The invite code of the server                                                       | **Yes**  |
 | `locale`     | The locale for the widget. Supported locales: `en-US`, `en-GB`, `fr-FR`, `nl`, `dk` | No       |
 | `format`     | Supports `svg` and `png`                                                            | No       |
+
+## Examples
+
+[![SnailyCAD](https://invite.caspertheghost.me?inviteCode=eGnrPqEH7U)](https://discord.gg/eGnrPqEH7U)
+[![luxalgo](https://invite.caspertheghost.me?inviteCode=luxalgo)](https://discord.gg/luxalgo)
+[![Discord Developers](https://invite.caspertheghost.me?inviteCode=discord-developers)](https://discord.gg/discord-developers)
