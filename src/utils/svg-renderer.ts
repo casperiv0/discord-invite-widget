@@ -3,6 +3,7 @@ import satori from "satori";
 import { loadFonts } from "./load-fonts";
 import { Locale, t } from "./translate";
 import { GuildFeature } from "discord-api-types/v10";
+import { loadEmoji } from "./load-emoji";
 
 interface RenderInviteSVGOptions {
   inviteCode: string;
@@ -201,7 +202,7 @@ export async function renderInviteSVG(options: RenderInviteSVGOptions) {
                                 display: "flex",
                                 flexDirection: "row",
                                 alignItems: "center",
-                                gap: "2px",
+                                gap: "6px",
                                 textOverflow: "ellipsis",
                                 overflow: "hidden",
                                 whiteSpace: "nowrap",
@@ -375,6 +376,13 @@ export async function renderInviteSVG(options: RenderInviteSVGOptions) {
       width: INVITE_WIDTH,
       height: INVITE_HEIGHT,
       fonts,
+      async loadAdditionalAsset(languageCode, segment) {
+        if (languageCode === "emoji") {
+          return loadEmoji({ text: segment });
+        }
+
+        return segment;
+      },
     },
   );
 
