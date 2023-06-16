@@ -29,5 +29,6 @@
     "discord-api-types": "^0.37.45",
     "satori": "^0.10.1",
     "twemoji": "^14.0.2"
-  }
+  },
+  "license": "MIT"
 }
