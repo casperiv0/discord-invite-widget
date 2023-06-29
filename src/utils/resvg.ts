@@ -2,7 +2,7 @@ import resvg_wasm from "../../node_modules/@resvg/resvg-wasm/index_bg.wasm";
 import { initWasm, Resvg } from "@resvg/resvg-wasm";
 import { INVITE_WIDTH } from "./svg-renderer";
 
-initWasm(resvg_wasm);
+initWasm(resvg_wasm).catch(console.error);
 
 export function svgToPng(svg: string) {
   const pngData = new Resvg(svg, {
