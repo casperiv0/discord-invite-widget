@@ -8,7 +8,7 @@
 ## Usage
 
 ```md
-[![Discord Server Invite](https://invite.caspertheghost.me?inviteCode=XXXXXXX)](https://discord.gg/XXXXXXX)
+[![Discord Server Invite](https://invite.casperiv.dev?inviteCode=XXXXXXX)](https://discord.gg/XXXXXXX)
 ```
 
 ## Query Parameters
@@ -21,6 +21,6 @@
 
 ## Examples
 
-[![SnailyCAD](https://invite.caspertheghost.me?inviteCode=eGnrPqEH7U)](https://discord.gg/eGnrPqEH7U)
-[![luxalgo](https://invite.caspertheghost.me?inviteCode=lux)](https://discord.gg/lux)
-[![Discord Developers](https://invite.caspertheghost.me?inviteCode=discord-developers)](https://discord.gg/discord-developers)
+[![SnailyCAD](https://invite.casperiv.dev?inviteCode=eGnrPqEH7U)](https://discord.gg/eGnrPqEH7U)
+[![luxalgo](https://invite.casperiv.dev?inviteCode=lux)](https://discord.gg/lux)
+[![Discord Developers](https://invite.casperiv.dev?inviteCode=discord-developers)](https://discord.gg/discord-developers)

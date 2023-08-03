@@ -7,7 +7,7 @@ This is a Cloudflare Worker that renders a Discord invite as an SVG image.
 
 
 \`\`\`md
-[![Discord Server Invite](https://invite.caspertheghost.me?inviteCode=XXXXXXX)](https://discord.gg/XXXXXXX)
+[![Discord Server Invite](https://invite.casperiv.dev?inviteCode=XXXXXXX)](https://discord.gg/XXXXXXX)
 \`\`\`
 
 
