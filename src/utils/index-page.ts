@@ -21,5 +21,5 @@ This is a Cloudflare Worker that renders a Discord invite as an SVG image.
 
 ## GitHub
 
-[GitHub Repository](https://github.com/dev-caspertheghost/discord-invite-widget)
+[GitHub Repository](https://github.com/casperiv0/discord-invite-widget)
 `;

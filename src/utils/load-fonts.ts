@@ -8,7 +8,7 @@ export async function loadFonts(): Promise<SatoriOptions["fonts"]> {
       style: "normal",
       data: await (
         await fetch(
-          "https://github.com/Dev-CasperTheGhost/discord-invite-widget/raw/main/assets/fonts/whitneymedium.otf",
+          "https://github.com/casperiv0/discord-invite-widget/raw/main/assets/fonts/whitneymedium.otf",
         )
       ).arrayBuffer(),
     },
@@ -18,7 +18,7 @@ export async function loadFonts(): Promise<SatoriOptions["fonts"]> {
       style: "normal",
       data: await (
         await fetch(
-          "https://github.com/Dev-CasperTheGhost/discord-invite-widget/raw/main/assets/fonts/whitneysemibold.otf",
+          "https://github.com/casperiv0/discord-invite-widget/raw/main/assets/fonts/whitneysemibold.otf",
         )
       ).arrayBuffer(),
     },
@@ -28,7 +28,7 @@ export async function loadFonts(): Promise<SatoriOptions["fonts"]> {
       style: "normal",
       data: await (
         await fetch(
-          "https://github.com/Dev-CasperTheGhost/discord-invite-widget/raw/main/assets/fonts/whitneybold.otf",
+          "https://github.com/casperiv0/discord-invite-widget/raw/main/assets/fonts/whitneybold.otf",
         )
       ).arrayBuffer(),
     },
